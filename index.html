@@ -63,25 +63,18 @@ var x6 = document.getElementById("demo6");
 var x7 = document.getElementById("demo7");
 
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
+  $.getJSON('https://ipinfo.io', function(data){
+  console.log(data.city)
+  getData(data.city)
+})
 }
 
-function showPosition(position) {
-    latitude = position.coords.latitude; 
-    longitude =  position.coords.longitude;
-    console.log(latitude);
-    getData(latitude, longitude);
-}
 
-function getData(lat,long)
+function getData(city)
 {
-	console.log(long);
+	
     var API_KEY = "8e3d5fb059aff365a9f81937943b8c4b";
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=metric&appid=" + API_KEY;
+    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + API_KEY;
     var xhr = new XMLHttpRequest();
     xhr.open("GET", apiUrl, false);
     xhr.send();
