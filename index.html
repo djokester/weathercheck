@@ -48,11 +48,10 @@ font-size: 200%;
 <div class="col-sm-6">
 <p id="demo4"></p>
 </div>
-<p id="demo6"></p>
 </div>
-
-
+<p id="demo6"></p>
 <button onclick="getLocation()" style="color:black;">Click!</button>
+</div>
 <script>
 var x = document.getElementById("demo");
 var x1 = document.getElementById("demo1");
@@ -102,7 +101,7 @@ function getData(lat,long)
 	var date = new Date();
 	console.log(date.getHours()>12);
 	x7.innerHTML = date.getHours() + ":" + date.getMinutes();
-	if(date.getHours()>17){
+	if(date.getHours()>17 || date.getHours()<5){
 		document.getElementById("container").style.background= "#B2D6F7";
 		document.body.style.background= "#3E5060";		
 	}
