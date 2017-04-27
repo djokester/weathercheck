@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="location"></h1>
+<p id="temperature"></h1>
+<p id="windSpeed"></h1>  
+<p id="Humidity"></h1>
+
+<script>
+var location = document.getElementById("location");
+var temperature = document.getElementById("temperature");
+var humidity = document.getElementById("humidity");
+var windSpeed = document.getElementById("location");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        location.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    latitude = position.coords.latitude; 
+    longitude =  position.coords.longitude;
+    console.log(latitude);
+    getData(latitude, longitude);
+}
+
+function getData(lat,long)
+{
+	console.log(long);
+    var API_KEY = "8e3d5fb059aff365a9f81937943b8c4b";
+    var apiUrl = "http://api.wunderground.com/api/fc12d123c1801423/conditions/q/CA/San_Francisco.json"
+    var xhr = new XMLHttpRequest();
+        xhr.open("GET", apiUrl, false);
+        xhr.send();
+	console.log(xhr.status);
+	console.log(xhr.statusText);
+	response = JSON.parse(xhr.response);
+	console.log(response.current_observation.display_location.full);
+         
+}
+</script>
+
+</body>
+</html>
