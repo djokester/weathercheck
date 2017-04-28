@@ -82,10 +82,10 @@ function getData(city)
 		console.log(response);
 		console.log(response.weather[0].icon);
 	x.innerHTML = response.name;
-	x1.innerHTML = parseInt(response.main.temp_max);
-	x2.innerHTML = response.main.humidity;
-	x3.innerHTML = response.wind.speed;
-	x4.innerHTML = response.wind.deg;
+	x1.innerHTML = parseInt(response.main.temp_max+"°C");
+	x2.innerHTML = response.main.humidity + "%";
+	x3.innerHTML = response.wind.speed + "m/s";
+	x4.innerHTML = response.wind.deg "°";
 	x5.src = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
 	x6.innerHTML = response.weather[0].description;
 	var date = new Date();
