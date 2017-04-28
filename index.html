@@ -82,7 +82,7 @@ function getData(city)
 		console.log(response);
 		console.log(response.weather[0].icon);
 	x.innerHTML = response.name;
-	x1.innerHTML = parseInt(response.main.temp_max+"°C");
+	x1.innerHTML = parseInt(response.main.temp_max)+ "°C";
 	x2.innerHTML = response.main.humidity + "%";
 	x3.innerHTML = response.wind.speed + "m/s";
 	x4.innerHTML = response.wind.deg "°";
